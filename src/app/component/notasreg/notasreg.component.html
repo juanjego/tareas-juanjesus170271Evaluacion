@@ -1,0 +1,71 @@
+<html>
+    <br><br>
+    <body style="background-color: black;">
+        <form [formGroup]="notasreg" (ngSubmit)="registrar(notasreg.value)" novalidate>
+            <div class="form-row offset-md-1" >
+            <div class="col-sm-10 my-1 offset-md-1">
+                <label class="sr-only" for="inlineFormInputGroupUsername">Titulo de la nota</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">Titulo</div>
+                    </div>
+                    <input type="text" class="form-control" formControlName="titulo" id="titulo"  name="titulo" [(ngModel)]="titulo" placeholder="Titulo de la nota">
+                </div>
+                <div class="err" *ngIf="notasreg.get('titulo').errors && notasreg.get('titulo').dirty">
+                    <p *ngIf="notasreg.get('titulo').hasError('required')">Campo requerido</p>
+               </div>  
+            </div>
+            <hr><hr>
+            <div class="input-group col-sm-10 offset-md-1">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">Descripcion</span>
+                </div>
+                <textarea  class="form-control" formControlName="descripcion" id="descripcion"  name="descripcion" [(ngModel)]="descripcion" aria-label="With textarea" placeholder="Agregar descripcion de la nota"></textarea>
+            </div>
+                <div class="err" *ngIf="notasreg.get('descripcion').errors && notasreg.get('descripcion').dirty">
+                    <p *ngIf="notasreg.get('descripcion').hasError('required')">Campo requerido</p>
+                </div>
+                <div class="form-group" class="form-group col-md-5 offset-md-1">
+                    <button type="submit" class="btn btn-primary mb-2" [disabled]="notasreg.invalid" 
+                    (click)="onSubmit()">Guardar</button>
+                </div>
+            </div>
+        </form>
+
+        
+        <hr><hr>
+        <div class="form-row">     
+            <div class="input-group mb-8 offset-md-1" >
+        <table>
+            <tr>
+              <td *ngFor="let item of notas;let indice=index">  
+                <div class="form-row">     
+                    <div class="input-group mb-6 offset-md-1" >
+                    <div class="card" class="card mb-6 border-info offset-md-1"  style="max-width: 15rem;">
+                        <div class="card-header">
+                            {{ fechaActual | date:'dd/MM/yy' }}
+                        </div>
+                        <div class="card-body">
+                            <div class="card-body text-info" >
+                                <h5 class="card-title"></h5>
+                                <p class="card-body" >{{item}}</p>
+                              </div>
+                        </div>
+                    </div>
+                     </div>
+                     </div>                  
+                </td>
+            </tr>
+        </table>
+        </div>
+        </div>
+
+        <!--aQUI-->
+
+        <div>
+            <p *ngFor="let item of notas, index as i">
+           {{i}} Registro de Notas: {{item}}
+           </p>
+       </div>
+    </body>
+</html>

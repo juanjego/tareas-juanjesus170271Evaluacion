@@ -1,0 +1,75 @@
+<html>
+    <head>
+        <script>
+            function habilitar(value)
+            {
+                if(value==true)
+                {
+                    // habilitamos
+                    document.getElementById("entrada").disabled=false;
+                }else if(value==false){
+                    // deshabilitamos
+                    document.getElementById("entrada").disabled=true;
+                }
+            }
+        </script>
+    </head>
+    <body style="background-color: black;">
+        <br>
+        <form [formGroup]="tareasreg" (ngSubmit)="registrar(tareasreg.value)" novalidate>
+        <div class="form-row" >
+            <div class="form-group" class="form-group col-md-6 offset-md-1 ">
+            <input type="text" class="form-control" formControlName="tarea" id="tarea"  name="tarea" [(ngModel)]="tarea" placeholder="ingrese una tarea nueva">
+            </div>
+                <div class="err" *ngIf="tareasreg.get('tarea').errors && tareasreg.get('tarea').dirty">
+                     <p *ngIf="tareasreg.get('tarea').hasError('required')">Campo requerido</p>
+                </div>
+            <div class="form-group" class="form-group col-md-5">
+                <button type="submit" class="btn btn-primary mb-2" [disabled]="tareasreg.invalid" 
+                (click)="onSubmit()">Guardar</button>
+            </div>
+            <button type="submit" class="btn btn-danger mb-2 offset-md-1" (click)="onDelete()">Eliminar</button>
+        </div>
+        </form>
+        <script>
+            function activar(){
+                if (document.getElementById('entrada' ).checked==true)
+                {  
+                    document.getElementById('entrada' ).disabled=false;
+                    document.getElementById('entrada' )=disabled;
+                 }
+                 if (document.getElementById('entrada' ).checked=false)
+                {  
+                    document.getElementById('entrada' ).disabled=true;
+                    document.getElementById('entrada' )=disabled;
+                 }
+
+            }
+        </script>
+        <br><br>
+        <div class="form-row">     
+            <div class="input-group mb-6 col-sm-11 offset-md-1" >
+                <table>
+                    <tr *ngFor="let item of tareas;let indice=index">
+                      <td>  
+                        <div class="input-group-prepend" >
+                            <div class="input-group-text"  id="entrada">
+                              <input type="checkbox" id="entrada" name="check" class="check"  class="strikethrough"
+                              onclick="activar()" aria-label="Checkbox for following text input" >
+                              <label for="chec" class="strikeThis mb-0 col-sm-12" >{{item}}</label>
+                            </div>
+                        </div>  
+                      </td>
+                      </tr>
+                    </table> 
+            </div>
+        </div>
+        
+
+        <div>
+            <p *ngFor="let item of tareas, index as i">
+                {{i}} Registro de Tareas: {{item}}
+            </p>
+        </div>
+    </body>
+</html>

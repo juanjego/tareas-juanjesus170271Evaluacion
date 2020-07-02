@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "tareas"
+    }
+  },
+  "defaultProject": "tareas",
+  "cli": {
+    "analytics": "09658539-b98e-4e85-b3bb-871f00e67ebe"
+  }
 }
