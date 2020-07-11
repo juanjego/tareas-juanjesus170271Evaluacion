@@ -29,7 +29,9 @@
                     <button type="submit" class="btn btn-primary mb-2" [disabled]="notasreg.invalid" 
                     (click)="onSubmit()">Guardar</button>
                 </div>
+                <button type="submit" class="btn btn-success mb-2 offset-md-1" (click)="mostrarArreglo()">Mostrar datos</button>
             </div>
+            <div class="alert alert-primary" role="alert" >{{notas}}</div>
         </form>
 
         

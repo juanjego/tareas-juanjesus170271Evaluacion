@@ -16,6 +16,8 @@ export class NotasregComponent  {
   public mensaje: string ="";
   public notas2: Array<string> = [];
   public fechaActual = new Date();
+
+  
     constructor(
     public fb: FormBuilder
   ) {
@@ -32,12 +34,17 @@ export class NotasregComponent  {
   }
 
 
+
 onSubmit(){
   this.registro = "Titulo: "+ this.titulo+", Descripcion: "+this.descripcion;
   this.notas2 =this.registro.split(", ");
   this.notas.push(this.registro);
-  console.log(this.notas);
+  localStorage.setItem('notas', JSON.stringify(this.notas));
 }
+mostrarArreglo(){
+  this.notas = JSON.parse(localStorage.getItem('notas'));
+}
+
  
 }
 
